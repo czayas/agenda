@@ -17,7 +17,10 @@ class Estante:
         archivo -- Nombre del archivo shelve (str)
         wb      -- Reescritura automática de registros accedidos (bool)
         """
-        self.dic = shelve.open(archivo, writeback=wb)
+        try:
+            self.dic = shelve.open(archivo, writeback=wb)
+        except Exception as excepcion:
+            self.dic = {}
 
     def __repr__(self):
         """Retorna la representación de la clase (archivo shelve)."""
@@ -48,7 +51,18 @@ class Estante:
 
     def __del__(self):
         """Destructor: Cierra el archivo shelve."""
-        self.dic.close()
+        try:
+            self.dic.close()
+        except AttributeError:
+            pass
+
+    def keys(self):
+        """Retorna una lista con las claves del diccionario."""
+        return list(self.dic.keys())
+
+    def esarchivo(self):
+        """Retorna True si el diccionario es un archivo shelve."""
+        return isinstance(self.dic, shelve.DbfilenameShelf)
 
 
 def main():
