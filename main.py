@@ -76,7 +76,7 @@ class Main:
                 for nombre in sorted(self.agenda)
                 if cadena in nombre)
 
-    def ayuda(self, comando="zzz"):
+    def ayuda(self, comando=None):
         """
         Retorna la lista de comandos disponibles.
 

@@ -8,7 +8,11 @@ Este pequeño y sencillo proyecto tiene como único objetivo el servir como refe
 
 ## Fundamentos
 
-Se han tomado en cuenta los principios SOLID de diseño orientado a objetos, el patrón de diseño MVC (Modelo/Vista/Controlador) y las propuestas de mejora contenidas en los documentos PEP 8 (Guía de Estilo para Código Python) y PEP 257 (Convenciones para Cadenas de Documentación).
+- Principios SOLID de diseño orientado a objetos
+- Patrón de diseño MVC (Modelo/Vista/Controlador)
+- Propuestas de mejora contenidas en los documentos:
+  - PEP 8 (Guía de Estilo para Código Python)
+  - PEP 257 (Convenciones para Cadenas de Documentación)
 
 ## Características
 

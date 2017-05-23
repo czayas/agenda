@@ -13,7 +13,8 @@ from readline import parse_and_bind
 
 def strip(cadena):
     """Retorna una cadena sin espacios a los lados en cada línea."""
-    return "\n".join(linea.strip() for linea in cadena.split("\n")).strip()
+    return "\n".join(linea.strip()
+                     for linea in cadena.split("\n") if linea).strip()
 
 
 def esiterable(objeto):
@@ -26,7 +27,7 @@ def iterable(objeto):
     return iter([objeto]) if not esiterable(objeto) else objeto
 
 
-class Completador(object):
+class Completador:
     """Completador para readline."""
 
     def __init__(self, opciones):
@@ -42,7 +43,7 @@ class Completador(object):
                           if o and o.startswith(texto)]
             else:
                 self.o = self.opciones[:]
-        return None if estado >= len(self.o) else self.o[estado]
+        return None if estado >= len(self.o) else self.o[estado] + " "
 
 
 class REPL:
@@ -81,9 +82,8 @@ class REPL:
             except TypeError:
                 print(strip(self.comandos[comando].__doc__))
             except Exception as excepcion:
-                print("Error inesperado:")
-                print(type(excepcion), excepcion)
-                print(format_exc().strip())
+                print("Error inesperado:\n", type(excepcion), excepcion, "\n",
+                      format_exc().strip())
 
 
 def main():
