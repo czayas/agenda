@@ -4,11 +4,16 @@ Módulo REPL: Interfaz de usuario en modo consola (vista).
 
 Proyecto de ejemplo - Paradigmas de la Programación
 """
-from sys import exit
+import sys
 from traceback import format_exc
 from collections import Iterable
-from readline import set_completer
-from readline import parse_and_bind
+try:
+    # El módulo readline agrega autocompletado e historial a input().
+    from readline import set_completer
+    from readline import parse_and_bind
+except ImportError:
+    # El módulo readline no está disponible en Windows.
+    pass
 
 
 def strip(cadena):
@@ -28,7 +33,7 @@ def iterable(objeto):
 
 
 class Completador:
-    """Completador para readline."""
+    """Completador para el módulo readline."""
 
     def __init__(self, opciones):
         """Autocompletado con tabulación."""
@@ -60,8 +65,13 @@ class REPL:
         self.comandos = comandos
         self.introduccion = introduccion
         self.indicador = indicador
-        set_completer(Completador(comandos.keys()).completar)
-        parse_and_bind('tab:complete')
+        try:
+            # Asignación de método de autocompletado para el módulo readline.
+            set_completer(Completador(comandos.keys()).completar)
+            parse_and_bind('tab:complete')
+        except NameError:
+            # El módulo readline no está disponible en Windows.
+            pass
 
     def ciclo(self):
         """Ejecuta el ciclo REPL."""
@@ -76,7 +86,7 @@ class REPL:
             except ValueError:
                 pass
             except (KeyboardInterrupt, EOFError):
-                exit(0)
+                sys.exit(0)
             except KeyError:
                 print("{}: Comando desconocido.".format(comando))
             except TypeError:
