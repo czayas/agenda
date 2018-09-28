@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Módulo Main: Programa principal (controlador).
+Módulo main: Programa principal (controlador).
 
 Proyecto de ejemplo - Paradigmas de la Programación
 Agenda telefónica - Ejecute "ayuda" para más información
 """
-from agenda import Agenda
+from agenda import Contacto
 from estante import Estante
 from repl import REPL
 from repl import strip
@@ -39,7 +39,7 @@ class Main:
         nombre   -- Nombre del contacto. Se usará como clave.
         telefono -- Teléfono del contacto.
         """
-        self.agenda[nombre] = Agenda(nombre, telefono)
+        self.agenda[nombre] = Contacto(nombre, telefono)
 
     def borrar(self, nombre):
         """

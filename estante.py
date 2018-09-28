@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Módulo Estante: Envoltorio de Shelve (persistencia de datos).
+Módulo estante: Envoltorio de Shelve (persistencia de datos).
 
 Proyecto de ejemplo - Paradigmas de la Programación
 """
@@ -19,7 +19,7 @@ class Estante:
         """
         try:
             self.dic = shelve.open(archivo, writeback=wb)
-        except Exception as excepcion:
+        except: # Exception as excepcion:
             self.dic = {}
 
     def __repr__(self):
