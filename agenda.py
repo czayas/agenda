@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Módulo Agenda: Clase principal (modelo).
+Módulo agenda: Clase principal (modelo).
 
 Proyecto de ejemplo - Paradigmas de la Programación
 """
 
 
-class Agenda:
-    """Agenda telefónica."""
+class Contacto:
+    """Contacto de agenda telefónica."""
 
     def __init__(self, nombre, telefono):
         """Constructor: Inicializa propiedades de instancia."""
@@ -23,9 +23,9 @@ def main():
     """Función principal (ejemplo de uso)."""
     agenda = {}
 
-    agenda["carlos"] = Agenda("carlos", "222-333")
-    agenda["sergio"] = Agenda("sergio", "444-555")
-    agenda["estela"] = Agenda("estela", "666-777")
+    agenda["carlos"] = Contacto("carlos", "222-333")
+    agenda["sergio"] = Contacto("sergio", "444-555")
+    agenda["estela"] = Contacto("estela", "666-777")
 
     for clave in agenda:
         print(agenda[clave])

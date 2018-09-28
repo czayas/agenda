@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Módulo REPL: Interfaz de usuario en modo consola (vista).
+Módulo repl: Interfaz de usuario en modo consola (vista).
 
 Proyecto de ejemplo - Paradigmas de la Programación
 """
 import sys
 from traceback import format_exc
-from collections import Iterable
+from collections.abc import Iterable
 try:
     # El módulo readline agrega autocompletado e historial a input().
     from readline import set_completer
