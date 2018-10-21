@@ -3,6 +3,7 @@
 Módulo agenda: Clase principal (modelo).
 
 Proyecto de ejemplo - Paradigmas de la Programación
+Autor: Carlos Zayas (czayas en gmail)
 """
 
 
@@ -23,9 +24,9 @@ def main():
     """Función principal (ejemplo de uso)."""
     agenda = {}
 
-    agenda["carlos"] = Contacto("carlos", "222-333")
-    agenda["sergio"] = Contacto("sergio", "444-555")
-    agenda["estela"] = Contacto("estela", "666-777")
+    agenda["carlos"] = Contacto("Carlos", "222-333")
+    agenda["sergio"] = Contacto("Sergio", "444-555")
+    agenda["estela"] = Contacto("Estela", "666-777")
 
     for clave in agenda:
         print(agenda[clave])

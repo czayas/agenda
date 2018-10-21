@@ -3,6 +3,7 @@
 Módulo repl: Interfaz de usuario en modo consola (vista).
 
 Proyecto de ejemplo - Paradigmas de la Programación
+Autor: Carlos Zayas (czayas en gmail)
 """
 import sys
 from traceback import format_exc
@@ -14,6 +15,12 @@ try:
 except ImportError:
     # El módulo readline no está disponible en Windows.
     pass
+
+
+def out(cadena="", final="\n"):
+    """Envía una cadena a stdout y limpia el buffer (imprime más rápido)."""
+    sys.stdout.write(str(cadena) + final)
+    sys.stdout.flush()
 
 
 def strip(cadena):
@@ -30,6 +37,12 @@ def esiterable(objeto):
 def iterable(objeto):
     """Retorna un iterador del objeto (una cadena no debe ser iterable)."""
     return iter([objeto]) if not esiterable(objeto) else objeto
+
+
+def salir(estado=0):
+    """Finaliza la ejecución de la aplicación."""
+    out()
+    sys.exit(estado)
 
 
 class Completador:
@@ -75,25 +88,26 @@ class REPL:
 
     def ciclo(self):
         """Ejecuta el ciclo REPL."""
-        print(self.introduccion)
+        out(self.introduccion)
         while True:
             try:
                 comando, *parametros = input(self.indicador).split()
                 salida = self.comandos[comando](*parametros)
                 if salida:
                     for linea in iterable(salida):
-                        print(linea)
+                        out(linea)
             except ValueError:
                 pass
             except (KeyboardInterrupt, EOFError):
-                sys.exit(0)
+                salir()
             except KeyError:
-                print("{}: Comando desconocido.".format(comando))
+                out("{}: Comando desconocido.".format(comando))
             except TypeError:
-                print(strip(self.comandos[comando].__doc__))
+                out(strip(self.comandos[comando].__doc__))
             except Exception as excepcion:
-                print("Error inesperado:\n", type(excepcion), excepcion, "\n",
-                      format_exc().strip())
+                out("Error inesperado:\n" +
+                    str(type(excepcion)) + str(excepcion) + "\n" +
+                    format_exc().strip())
 
 
 def main():

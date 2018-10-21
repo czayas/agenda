@@ -3,12 +3,15 @@
 Módulo main: Programa principal (controlador).
 
 Proyecto de ejemplo - Paradigmas de la Programación
+Autor: Carlos Zayas (czayas en gmail)
+
 Agenda telefónica - Ejecute "ayuda" para más información
 """
 from agenda import Contacto
 from estante import Estante
 from repl import REPL
 from repl import strip
+from repl import salir
 
 
 class Main:
@@ -96,7 +99,7 @@ class Main:
 
         Este comando no requiere de parámetros.
         """
-        quit()
+        salir()
 
 
 if __name__ == "__main__":

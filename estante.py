@@ -3,6 +3,7 @@
 Módulo estante: Envoltorio de Shelve (persistencia de datos).
 
 Proyecto de ejemplo - Paradigmas de la Programación
+Autor: Carlos Zayas (czayas en gmail)
 """
 import shelve
 
